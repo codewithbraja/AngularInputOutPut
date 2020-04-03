@@ -1,0 +1,35 @@
+<h3>Customer Component</h3>
+<p>Customer </p>
+<p>To help you get started, we've also set up:</p>
+<div>
+  Customer Name :-<input [(ngModel)]="currentCustomer.CustomerName" id="Text1" type="text" />
+  Customer Code :-<input [(ngModel)]="currentCustomer.CustomerCode" id="Text2" type="text" />
+  Customer Amount :-<input [(ngModel)]="currentCustomer.CustomerAmount" id="Text3" type="text" />
+  <input (click)="Add()" type="button" value="add customer" />
+  <input (click)="Update()" type="button" value="Update customer" />
+  <br />
+  {{currentCustomer.CustomerName}}<br />
+  {{currentCustomer.CustomerCode}}<br />
+  {{currentCustomer.CustomerAmount}}<br />
+
+  <br />
+  <p>below table data is non generic:</p>
+  <table border="1">
+    <tr>
+      <td>Name</td>
+      <td>Code</td>
+      <td>Amount</td>
+    </tr>
+    <tr *ngFor="let cust of customers">
+      <td>{{cust.CustomerName}}</td>
+      <td>{{cust.CustomerCode}}</td>
+      <td>{{cust.CustomerAmount}}</td>
+      <td><a (click)="Select(cust)">Select</a></td>
+    </tr>
+  </table>
+
+
+  <grid-ui [grid-EntityName]="currentCustomer.CustomerName"
+           [grid-Dataset]="customers"></grid-ui>
+
+</div>

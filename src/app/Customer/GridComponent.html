@@ -1,0 +1,16 @@
+Displaying Record for {{EntityName}}<<=This binding code working fine and whose value is changing on change of parent.
+<br>
+Through constructor, grid component is binding.
+But this compoent is not detecting parent property change when i pusthvalues to an array.
+
+  <table border="1">
+    <tr>
+      <td *ngFor="let colName of gridColumns">
+        {{colName}}
+      </td>
+    </tr>
+    <tr *ngFor="let dr of gridData">
+      <td *ngFor="let colName of gridColumns">{{dr[colName]}}</td>
+      <td><a (click)="Select(cust)">Select</a></td>
+    </tr>
+  </table>

@@ -12,7 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { CustomerComponent } from './Customer/Customer.component';
 import { CustomerMasterComponent } from './Customer/CustomerMaster.component';
-import { GridrComponent } from './Customer/GridComponent';
+import { GridComponent } from './Customer/GridComponent';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,7 @@ import { GridrComponent } from './Customer/GridComponent';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    GridrComponent,
+    GridComponent,
     CustomerComponent,
     CustomerMasterComponent,
     

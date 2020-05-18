@@ -1,43 +1,32 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input,Output,EventEmitter, OnChanges } from '@angular/core';
 import { Customer } from '../Model/Customer'
 @Component({
   selector: 'grid-ui',
   templateUrl: './GridComponent.html'
 })
-export class GridrComponent {
+export class GridComponent implements OnChanges {
 
   constructor() {
     console.log('constructor called');
-    let x: Array<Object> = new Array<Object>();
-    var c1 = new Customer();
-    c1.CustomerCode = "001";
-    c1.CustomerName = "AAA"
-    c1.CustomerAmount = 10;
-    x.push(c1);
-    this.Set(x);
+  }
+  ngOnChanges(): void {
+    console.log('onchange called  called');
+   // this.SetData(this.gridData);
   }
   ngOnInit(): void {
     console.log('ngOninit called');
-    //below code in invalid in ngOnInit hooks
-    //let y: Array<Object> = new Array<Object>();
-    //var c2 = new Customer();
-    //c2.CustomerCode = "002";
-    //c2.CustomerName = "BBB"
-    //c2.CustomerAmount = 11;
-    //y.push(c2);
-    //this.Set(y);
   }
+ 
   gridColumns: Array<Object> = new Array<Object>();
-  //input
-
   gridData: Array<Object> = new Array<Object>();
 
-
+  @Output("grid-selected")
+  selectedEvent: EventEmitter<Object> = new EventEmitter<Object>();
   @Input("grid-EntityName")
   EntityName: String = "";
 
-  @Input("grid-Dataset")
-  Set(Data: Array<Object>) {
+  @Input("grid-Data")
+  set gridDataset(Data: Array<Object>) {
     console.log('Set method called');
     //fill column names
     if (Data.length > 0) {
@@ -49,17 +38,10 @@ export class GridrComponent {
     }
 
     this.gridData = Data;
+   // this.gridData = this.gridData.slice();
   }
 
-  //ngOnChanges(changes: SimpleChanges) {
-
-  //  for (let property in changes) {
-  //    if (property === 'gridData') {
-  //      console.log('success:');
-  //      console.log('Previous:', changes[property].previousValue);
-  //      console.log('Current:', changes[property].currentValue);
-  //      console.log('firstChange:', changes[property].firstChange);
-  //    }
-  //  }
-  //}
+  Select(_selectedObject:Object) {
+    this.selectedEvent.emit(_selectedObject);
+  }
 }

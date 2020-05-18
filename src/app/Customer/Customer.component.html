@@ -1,4 +1,4 @@
-<h3>Customer Component</h3>
+<h3>Customer Component Parent</h3>
 <p>Customer </p>
 <p>To help you get started, we've also set up:</p>
 <div>
@@ -13,7 +13,7 @@
   {{currentCustomer.CustomerAmount}}<br />
 
   <br />
-  <p>below table data is non generic:</p>
+  <p>below table specific to Customer(non generic:)</p>
   <table border="1">
     <tr>
       <td>Name</td>
@@ -24,12 +24,16 @@
       <td>{{cust.CustomerName}}</td>
       <td>{{cust.CustomerCode}}</td>
       <td>{{cust.CustomerAmount}}</td>
-      <td><a (click)="Select(cust)">Select</a></td>
+      <!--<td><a (click)="Select(cust)" href="/customer/#">Select</a></td>-->
+      <td><a (click)="Select(cust)" >Select</a></td>
     </tr>
   </table>
+  <p>below code pass values to generic grid component :</p>
+ 
 
-
-  <grid-ui [grid-EntityName]="currentCustomer.CustomerName"
-           [grid-Dataset]="customers"></grid-ui>
+  <grid-ui [grid-EntityName]="'Customer Component' "
+           [grid-Data]="customers"
+           (grid-selected)="Select($event)">
+  </grid-ui>
 
 </div>
